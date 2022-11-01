@@ -41,11 +41,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       home: Consumer(builder: (context, ref, child) {
-        final isLoading = ref.watch(authStateProvider).isLoading;
         final isLoggedIn = ref.watch(isLoggedInProvider);
-        if (isLoading) {
-          return const LoadingView();
-        }
         if (isLoggedIn) {
           return const MainView();
         } else {
@@ -66,7 +62,7 @@ class MainView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Main View'),
       ),
-      body: Consumer(builder: (context, ref, child) {
+      body: Consumer(builder: (_, ref, child) {
         return TextButton(
           onPressed: () async {
             await ref.read(authStateProvider.notifier).logOut();
@@ -103,19 +99,6 @@ class LoginView extends StatelessWidget {
           ],
         );
       }),
-    );
-  }
-}
-
-class LoadingView extends StatelessWidget {
-  const LoadingView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
     );
   }
 }
