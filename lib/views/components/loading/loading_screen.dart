@@ -72,7 +72,7 @@ class LoadingScreen {
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
                             return Text(
-                              snapshot.data!,
+                              snapshot.requireData,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium
