@@ -4,6 +4,7 @@ import 'package:instagram_clone_course/state/auth/providers/auth_state_provider.
 import 'package:instagram_clone_course/state/auth/providers/is_logged_in_provider.dart';
 import 'package:instagram_clone_course/state/providers/is_loading_provider.dart';
 import 'package:instagram_clone_course/views/components/loading/loading_screen.dart';
+import 'package:instagram_clone_course/views/login/login_view.dart';
 import 'firebase_options.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:developer' as devtools show log;
@@ -79,35 +80,6 @@ class MainView extends StatelessWidget {
             await ref.read(authStateProvider.notifier).logOut();
           },
           child: Text('Logout'),
-        );
-      }),
-    );
-  }
-}
-
-class LoginView extends StatelessWidget {
-  const LoginView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login View'),
-      ),
-      body: Consumer(builder: (context, ref, child) {
-        return Column(
-          children: <Widget>[
-            TextButton(
-              onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-              child: const Text('Sign In with Goggle'),
-            ),
-            TextButton(
-              onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
-              child: const Text('Sign In with Facebook'),
-            )
-          ],
         );
       }),
     );
