@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:instagram_clone_course/state/auth/providers/auth_state_provider.dart';
 import 'package:instagram_clone_course/state/auth/providers/is_logged_in_provider.dart';
 import 'package:instagram_clone_course/state/providers/is_loading_provider.dart';
 import 'package:instagram_clone_course/views/components/loading/loading_screen.dart';
@@ -8,6 +7,8 @@ import 'package:instagram_clone_course/views/login/login_view.dart';
 import 'firebase_options.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'dart:developer' as devtools show log;
+
+import 'views/main/main_view.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -55,32 +56,10 @@ class MyApp extends StatelessWidget {
 
         final isLoggedIn = ref.watch(isLoggedInProvider);
         if (isLoggedIn) {
-          return const MainView();
+          return MainView();
         } else {
           return const LoginView();
         }
-      }),
-    );
-  }
-}
-
-// when you are already logged in
-class MainView extends StatelessWidget {
-  const MainView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main View'),
-      ),
-      body: Consumer(builder: (_, ref, child) {
-        return TextButton(
-          onPressed: () async {
-            await ref.read(authStateProvider.notifier).logOut();
-          },
-          child: Text('Logout'),
-        );
       }),
     );
   }
