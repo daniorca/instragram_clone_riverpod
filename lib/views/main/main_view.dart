@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:instagram_clone_course/state/image_upload/helpers/image_picker_helper.dart';
+import 'package:instagram_clone_course/state/image_upload/models/file_type.dart';
+import 'package:instagram_clone_course/state/post_settings/providers/post_setting_provider.dart';
+import 'package:instagram_clone_course/views/create_new_post/create_new_post.dart';
 
 import '../../state/auth/providers/auth_state_provider.dart';
 import '../components/dialogs/alert_dialog_model.dart';
@@ -25,11 +29,53 @@ class _MainViewState extends ConsumerState<MainView> {
           title: const Text(Strings.appName),
           actions: [
             IconButton(
-              onPressed: () async {},
+              onPressed: () async {
+                // pick video
+                final videoFile =
+                    await ImagePickerHelper.pickVideoFromGallery();
+                if (videoFile == null) {
+                  return;
+                }
+                ref.refresh(postSettingProvider);
+                // go the screen to create a new post
+                if (!mounted) {
+                  return;
+                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      fileToPost: videoFile,
+                      fileType: FileType.video,
+                    ),
+                  ),
+                );
+              },
               icon: const FaIcon(FontAwesomeIcons.film),
             ),
             IconButton(
-              onPressed: () async {},
+              onPressed: () async {
+                // pick video
+                final imageFile =
+                    await ImagePickerHelper.pickImageFromGallery();
+                if (imageFile == null) {
+                  return;
+                }
+                ref.refresh(postSettingProvider);
+                // go the screen to create a new post
+                if (!mounted) {
+                  return;
+                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => CreateNewPostView(
+                      fileToPost: imageFile,
+                      fileType: FileType.image,
+                    ),
+                  ),
+                );
+              },
               icon: const Icon(Icons.add_photo_alternate_outlined),
             ),
             IconButton(
