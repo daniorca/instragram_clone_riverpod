@@ -1,4 +1,4 @@
 enum DateSorting {
   newestOnTop,
-  oldestOnTo,
+  oldestOnTop,
 }

@@ -7,9 +7,9 @@ import 'package:instagram_clone_course/views/components/utils/async_value_widget
 
 import '../../../state/user_info/models/user_info_model.dart';
 
-class PostDisplayNameAbdMessageView extends ConsumerWidget {
+class PostDisplayNameAndMessageView extends ConsumerWidget {
   final Post post;
-  const PostDisplayNameAbdMessageView({super.key, required this.post});
+  const PostDisplayNameAndMessageView({super.key, required this.post});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

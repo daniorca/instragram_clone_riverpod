@@ -10,7 +10,7 @@ extension Sorting on Iterable<Comment> {
           switch (request.dateSorting) {
             case DateSorting.newestOnTop:
               return b.createdAt.compareTo(a.createdAt);
-            case DateSorting.oldestOnTo:
+            case DateSorting.oldestOnTop:
               return a.createdAt.compareTo(b.createdAt);
           }
         });
