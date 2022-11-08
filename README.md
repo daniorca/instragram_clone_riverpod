@@ -1,4 +1,4 @@
-# instagram_clone_course
+# instagram_clone_riverpod
 
 A new Flutter project.
 
