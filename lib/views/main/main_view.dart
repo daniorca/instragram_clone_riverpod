@@ -5,6 +5,7 @@ import 'package:instagram_clone_course/state/image_upload/helpers/image_picker_h
 import 'package:instagram_clone_course/state/image_upload/models/file_type.dart';
 import 'package:instagram_clone_course/state/post_settings/providers/post_setting_provider.dart';
 import 'package:instagram_clone_course/views/create_new_post/create_new_post.dart';
+import 'package:instagram_clone_course/views/tabs/home/home_view.dart';
 
 import '../../state/auth/providers/auth_state_provider.dart';
 import '../components/dialogs/alert_dialog_model.dart';
@@ -107,7 +108,7 @@ class _MainViewState extends ConsumerState<MainView> {
           children: [
             UserPostsView(),
             SearchView(),
-            UserPostsView(),
+            HomeView(),
           ],
         ),
       ),
