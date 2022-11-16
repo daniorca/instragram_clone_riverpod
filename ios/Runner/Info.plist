@@ -35,9 +35,9 @@
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>1763210354051716</string>
+	<string>YOUR_FACEBOOK_APP_ID</string>
 	<key>FacebookClientToken</key>
-	<string>1d6ad8e6dd544b4794f85abed4b7da0e</string>
+	<string>YOUR_FACEBOOK_CLIENT_TOKEN</string>
 	<key>FacebookDisplayName</key>
 	<string>Image Sharing Course</string>
 
